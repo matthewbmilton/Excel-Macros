@@ -1,4 +1,6 @@
 Attribute VB_Name = "mFormResizable"
+'Code from here: https://www.teachexcel.com/excel-tutorial/2027/resizable-userformFormResizableFormResizable
+
 Private Declare PtrSafe Function GetForegroundWindow Lib "User32.dll" () As Long
 
 Private Declare PtrSafe Function GetWindowLong _
