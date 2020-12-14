@@ -88,10 +88,20 @@ End Sub
 Private Sub cmd_IsNumber_Click()
     txt_WrapLeft = "IsNumber("
     txt_WrapRight = ")"
-    Call cmd_Preview_Click
-    
+    Call cmd_Preview_Click    
 End Sub
 
+Private Sub cmd_Pre_Round0_Click()
+    txt_WrapLeft = "Round("
+    txt_WrapRight = ",0)"
+    Call cmd_Preview_Click
+End Sub
+
+Private Sub cmd_Pre_Round2_Click()
+    txt_WrapLeft = "Round("
+    txt_WrapRight = ",2)"
+    Call cmd_Preview_Click
+End Sub
 
 '
 'Add (or delete) Pre-Defined command buttons and respective code as needed
