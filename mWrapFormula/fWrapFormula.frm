@@ -79,30 +79,34 @@ End Sub
 'This is a series of Command Buttons that will automatically populate the Left and Right wrappers
 'Based on Pre-Defined and commonly used wrappings
 'Also automatically selects the Preview command button
-Private Sub cmd_Pre_IfError_Click()
-    txt_WrapLeft = "IfError("
-    txt_WrapRight = ",0)"
-    Call cmd_Preview_Click
-End Sub
-
-Private Sub cmd_IsNumber_Click()
-    txt_WrapLeft = "IsNumber("
-    txt_WrapRight = ")"
-    Call cmd_Preview_Click    
-End Sub
-
-Private Sub cmd_Pre_Round0_Click()
-    txt_WrapLeft = "Round("
-    txt_WrapRight = ",0)"
-    Call cmd_Preview_Click
-End Sub
-
-Private Sub cmd_Pre_Round2_Click()
-    txt_WrapLeft = "Round("
-    txt_WrapRight = ",2)"
-    Call cmd_Preview_Click
-End Sub
-
+    Private Sub cmd_Pre_IfError_Click()
+        txt_WrapLeft = "IfError("
+        txt_WrapRight = ",0)"
+        Call cmd_Preview_Click
+    End Sub
+    
+    Private Sub cmd_Pre_IsNumber_Click()
+        txt_WrapLeft = "IsNumber("
+        txt_WrapRight = ")"
+        Call cmd_Preview_Click
+        
+    End Sub
+    Private Sub cmd_Pre_Round0_Click()
+        txt_WrapLeft = "Round("
+        txt_WrapRight = ",0)"
+        Call cmd_Preview_Click
+    End Sub
+    
+    Private Sub cmd_Pre_Round2_Click()
+        txt_WrapLeft = "Round("
+        txt_WrapRight = ",2)"
+        Call cmd_Preview_Click
+    End Sub
+    Private Sub cmd_Pre_Not_Click()
+        txt_WrapLeft = "Not("
+        txt_WrapRight = ")"
+        Call cmd_Preview_Click
+    End Sub
 '
 'Add (or delete) Pre-Defined command buttons and respective code as needed
 '--------------------------------------------------------------------------------------------------------
