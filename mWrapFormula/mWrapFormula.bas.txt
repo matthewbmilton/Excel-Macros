@@ -1,0 +1,3 @@
+Sub fWrapFormulaShow()
+  fWrapFormula.Show
+End Sub
