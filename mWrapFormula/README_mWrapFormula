@@ -1,0 +1,34 @@
+'---------------------------------------------------------------------------------------
+'WrapFormula will take a range of cells and wrap a function
+'around the existing formula
+'
+'Use Case:
+'   Existing formula: =A1/B1
+'   Issue: If B1 = 0, result is #DIV/0!
+'   Resolution: change the formula to =IfError(A1/B1,0)
+'   How to use:
+'       Select a cell or range of cells
+'       Launch the fWrapFormula form (tip: make a launcher button in the ribbon)
+'       Select 'Load' if necessary
+'       Original formula is diaplayed
+'           =A1/B1
+'       Input Left and Right wrappers:
+'           Wrap Left: IfError(
+'           Wrap Right: ,0)
+'           (or select the PreDefined button...)
+'       Select 'Preview'
+'       Result will concatenate the Left, Original, and Right fields
+'       Select 'Execute'
+'       Existing formulas in each cell will be wrapped inside the existing formula
+'       Cells will keep their original references.
+'       E.g., if your formulas are:
+'           =A1/B1
+'           =A2/B2
+'           =A3/B3
+'       then the resulting formulas will be:
+'           =IfError(A1/B1,0)
+'           =IfError(A2/B2,0)
+'           =IfError(A3/B3,0)
+'---------------------------------------------------------------------------------------
+'Author: Matthew B Milton
+'---------------------------------------------------------------------------------------
