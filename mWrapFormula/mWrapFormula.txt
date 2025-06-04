@@ -1,0 +1,164 @@
+'---------------------------------------------------------------------------------------
+'WrapFormula will take a range of cells and wrap a function
+'around the existing formula
+'
+'Use Case:
+'   Existing formula: =A1/B1
+'   Issue: If B1 = 0, result is #DIV/0!
+'   Resolution: change the formula to =IfError(A1/B1,0)
+'   How to use:
+'       Select a cell or range of cells
+'       Launch the fWrapFormula form (tip: make a launcher button in the ribbon)
+'       Select 'Load' if necessary
+'       Original formula is diaplayed
+'           =A1/B1
+'       Input Left and Right wrappers:
+'           Wrap Left: IfError(
+'           Wrap Right: ,0)
+'           (or select the PreDefined button...)
+'       Select 'Preview'
+'       Result will concatenate the Left, Original, and Right fields
+'       Select 'Execute'
+'       Existing formulas in each cell will be wrapped inside the existing formula
+'       Cells will keep their original references.
+'       E.g., if your formulas are:
+'           =A1/B1
+'           =A2/B2
+'           =A3/B3
+'       then the resulting formulas will be:
+'           =IfError(A1/B1,0)
+'           =IfError(A2/B2,0)
+'           =IfError(A3/B3,0)
+'---------------------------------------------------------------------------------------
+
+
+Private Sub UserForm_Activate()
+    FormResizable
+        'External SubFormResizable
+        'See code example from:
+        'https://www.teachexcel.com/excel-tutorial/2027/resizable-userformFormResizableFormResizable
+        'See "Private Sub UserForm_Resize()" for resizing commands of individual controls
+End Sub
+
+Private Sub UserForm_Initialize()
+    'On initializing the form, set the user input fields to empty strings
+        txt_Original = ""
+        txt_WrapLeft = ""
+        txt_WrapRight = ""
+        txt_Result = ""
+        
+    'Pre-load the original formula by clicking the Load button
+        cmd_Load_Click
+End Sub
+
+
+
+Private Sub cmd_Load_Click()
+    'Look at the formula of the first cell in the selecton
+    'Set text box to this formula
+        txt_Original = Selection.Cells(1).Formula
+End Sub
+
+'--------------------------------------------------------------------------------------------------------
+'This is a series of Command Buttons that will automatically populate the Left and Right wrappers
+'Based on Pre-Defined and commonly used wrappings
+'Also automatically selects the Preview command button
+    Private Sub cmd_Pre_IfError_Click()
+        txt_WrapLeft = "IfError("
+        txt_WrapRight = ",0)"
+        Call cmd_Preview_Click
+    End Sub
+    
+    Private Sub cmd_Pre_IsNumber_Click()
+        txt_WrapLeft = "IsNumber("
+        txt_WrapRight = ")"
+        Call cmd_Preview_Click
+        
+    End Sub
+    Private Sub cmd_Pre_Round0_Click()
+        txt_WrapLeft = "Round("
+        txt_WrapRight = ",0)"
+        Call cmd_Preview_Click
+    End Sub
+    
+    Private Sub cmd_Pre_Round2_Click()
+        txt_WrapLeft = "Round("
+        txt_WrapRight = ",2)"
+        Call cmd_Preview_Click
+    End Sub
+    Private Sub cmd_Pre_Not_Click()
+        txt_WrapLeft = "Not("
+        txt_WrapRight = ")"
+        Call cmd_Preview_Click
+    End Sub
+'
+'Add (or delete) Pre-Defined command buttons and respective code as needed
+'--------------------------------------------------------------------------------------------------------
+
+Private Sub cmd_Preview_Click()
+    'Previews the resulting formula after applying wrappers to the original formula
+        txt_Result = _
+            "=" & _
+            txt_WrapLeft & _
+            Replace(txt_Original, "=", "") & _
+            txt_WrapRight
+End Sub
+
+Private Sub cmd_Execute_Click()
+    'Execute the formula wrapping if it's valid, close the form, unload the form
+        If _
+            txt_Result = "" _
+        Then
+            MsgBox _
+                "You must select 'Preview' before continuing." & vbCr & vbCr & _
+                "The 'Result' field must be populated.", _
+                vbOKOnly + vbInformation, _
+                "Input needed..."
+        Else
+            Call WrapFormula
+            fWrapFormula.Hide
+        End If
+End Sub
+
+
+Private Sub WrapFormula()
+    'Loop through each cell in the selected range.
+    'Replace the existing formula with the replacement, consisting of:
+    '   Left Wrapper
+    '   Original formula for the cell
+    '   Right Wrapper
+    'Note: We use the "c.formula" construction here instead of "txt_result"
+    'If you used the text box, then every cell would be overwritten with the EXACT SAME formula,
+    'including any cell references. Using "c.formula" means each cell keeps its original references
+    'and thus the formula precedents/dependents are kept as-is.
+    
+        For Each c In Selection
+            c.Formula = CStr( _
+                "=" & _
+                txt_WrapLeft & _
+                Replace(c.Formula, "=", "") & _
+                txt_WrapRight _
+                )
+        Next c
+    
+End Sub
+
+
+
+Private Sub UserForm_Resize()
+    'When the form is resized, define the new width of the form
+    'Then resize specified elements according to the new form width
+    'There is a 30-point offset built in to maintain padding
+    
+    'Define variable
+        Dim newWidth As Double
+        
+    'Get the UserForm's new size, apply offset
+        newWidth = Me.Width - 30
+        
+    'Resize specified elements
+        For Each x In Me.Controls
+        x.Width = newWidth
+        Next x
+    
+End Sub
