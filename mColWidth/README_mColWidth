@@ -1,0 +1,10 @@
+'Takes each column and adjusts its width up to the nearest integer
+'----------------------------------------
+' Author: Matthew B Milton
+'----------------------------------------
+
+Option 1:
+Download .bas file and Import to Excel VBA
+
+Option 2:
+Copy from the .txt file and paste into your own module in Excel VBA
