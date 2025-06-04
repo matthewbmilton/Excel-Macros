@@ -7,11 +7,13 @@
 '	Select the 'Options...' button
 '	Assign a Shortcut Key
 'Recommended shortcut keys:
-'	AlignLeft	=	Ctrl+l
-'	AlighCenter	=	Ctrl+e
-'	AlignRight	=	Ctrl+r
-'	AlignCenterAcrossSelection	=	Ctrl+Shift+e
-
+'	Ctrl+l = AlignLeft
+'	Ctrl+e = AlighCenter
+'	Ctrl+r = AlignRight
+'	Ctrl+Shift+e = AlignCenterAcrossSelection
+'----------------------------------------
+' Author: Matthew B Milton
+'----------------------------------------
 
 Sub AlignLeft()
     With Selection
