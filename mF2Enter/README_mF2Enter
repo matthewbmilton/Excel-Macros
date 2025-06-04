@@ -1,0 +1,11 @@
+'Mimics pressing "<F2>, <Enter>" for each cell in selection
+'Useful to force update formats, turn text into URLs, or numbers to text within Text-formatted fields
+'----------------------------------------
+' Author: Matthew B Milton
+'----------------------------------------
+
+Option 1:
+Download .bas file and Import to Excel VBA
+
+Option 2:
+Copy from the .txt file and paste into your own module in Excel VBA
