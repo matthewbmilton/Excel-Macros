@@ -1,0 +1,19 @@
+Sub SplitColumnIntoMuliple()
+'Takes a long Column A,
+'Copies it into a number of columns
+'Based on how many items per column defined in SplitCount
+' Outputs to the right of the selected column
+'
+'Example:
+'   Col A has 13,000 items
+'   Need to split into separate columns every 900 items
+'   This will need 15 columns (14.4 rounded up)
+'----------------------------------------
+' Author: Matthew B Milton
+'----------------------------------------
+
+Option 1:
+Download .bas file and Import to Excel VBA
+
+Option 2:
+Copy from the .txt file and paste into your own module in Excel VBA
