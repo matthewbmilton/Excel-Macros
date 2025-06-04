@@ -32,3 +32,11 @@
 '---------------------------------------------------------------------------------------
 'Author: Matthew B Milton
 '---------------------------------------------------------------------------------------
+'Required:
+'  fWrapFormula.frx -- the Excel UserForm layout, including buttons, etc.
+'  fWrapFormula.frm -- the Excel UserForm code
+'  fWrapFormula.bas -- the Excel VBA to launch the UserForm. Printed here in entirety:
+'    Sub fWrapFormulaShow()
+'      fWrapFormula.Show
+'    End Sub
+'---------------------------------------------------------------------------------------
