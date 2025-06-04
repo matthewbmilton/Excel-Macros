@@ -1,0 +1,36 @@
+'Collection of short macros to enable quick formatting of Excel cells
+'Recommended use: assign shortcut keys to mimic MS Word functionality
+'Suggested shortcut keys:
+'  Ctrl+L = AlignLeft
+'  Ctrl+E = AlignCenter
+'  Ctrl+R = AlignRight
+'  Ctrl+Shift+E = AlignCenterAcrossSelection
+'Note that some of these mappings may overwrite existing Excel shortcut keys
+'----------------------------------------
+' Author: Matthew B Milton
+'----------------------------------------
+
+
+Sub AlignLeft()
+    With Selection
+        .HorizontalAlignment = xlLeft
+    End With
+End Sub
+
+Sub AlignCenter()
+    With Selection
+        .HorizontalAlignment = xlCenter
+    End With
+End Sub
+
+Sub AlignRight()
+    With Selection
+        .HorizontalAlignment = xlRight
+    End With
+End Sub
+
+Sub AlignCenterAcrossSelection()
+    With Selection
+        .HorizontalAlignment = xlCenterAcrossSelection
+    End With
+End Sub
