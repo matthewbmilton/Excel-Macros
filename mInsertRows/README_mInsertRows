@@ -1,0 +1,13 @@
+'----------------------------------------
+' Select a row. Run macro (recommended: from button on ribbon/Quick Access Toolbar)
+' Enter a number
+' Insert that many rows
+'----------------------------------------
+' Author: Matthew B Milton
+'----------------------------------------
+
+Option 1:
+Download .bas file and Import to Excel VBA
+
+Option 2:
+Copy from the .txt file and paste into your own module in Excel VBA
